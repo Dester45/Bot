@@ -12,7 +12,7 @@ module.exports.config = {
   joinNoti: [],
   leaveNoti: [],
   version: "69",
-  credits: "jonell",
+  credits: "jonell fix Aesther",
   description: "Download media from Facebook" 
 }
 
@@ -23,7 +23,7 @@ module.exports.handleEvent = async function ({ api, event }) {
     const regEx_tiktok = /https:\/\/(www\.|vt\.)?tiktok\.com\//;
     const link = event.body;
     if (regEx_tiktok.test(link)) {
-      api.setMessageReaction("📥", event.messageID, () => {}, true);
+      api.setMessageReaction("🟡", event.messageID, () => {}, true);
       try {
         const response = await axios.post(`https://www.tikwm.com/api/`, { url: link });
         const data = response.data.data;
@@ -116,32 +116,6 @@ module.exports.handleEvent = async function ({ api, event }) {
         }
       }
     })();
-  }
-  
-
-  if (event.body !== null) {
-    const youtube = new simpleYT('AIzaSyCMWAbuVEw0H26r94BhyFU4mTaP5oUGWRw');
-    const youtubeLinkPattern = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
-    const videoUrl = event.body;
-
-    if (youtubeLinkPattern.test(videoUrl)) {
-      try {
-        const video = await youtube.getVideo(videoUrl);
-        const stream = ytdl(videoUrl, { quality: 'highest' });
-        const filePath = path.join(downloadDirectory, `${video.title}.mp4`);
-        const file = fs.createWriteStream(filePath);
-
-        stream.pipe(file);
-
-        file.on('finish', () => {
-          file.close(() => {
-            api.sendMessage({body: "𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 𝖥𝖺𝖼𝖾𝖻𝗈𝗈𝗄 Youtube\n\n🟢ᗩƐᔕƬHƐᖇ⚪- ˕ •マ:", attachment: fs.createReadStream(filePath) }, event.threadID, () => fs.unlinkSync(filePath));
-          });
-        });
-      } catch (error) {
-        console.error('Error downloading video:', error);
-      }
-    }
   }
       
   if (event.body !== null) {
