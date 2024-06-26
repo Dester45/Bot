@@ -24,7 +24,7 @@ module.exports.run = async function ({ api, event, args }) {
   const photoUrl = messageReply.attachments[0].url;
 
   try {
-    const response = await axios.get(`https://eurix-api.replit.app/remini?input=${encodeURIComponent(photoUrl)}`, { responseType: "arraybuffer"});
+    const response = await axios.get(`https://markdevs-api.onrender.com/api/remini?inputImage=${encodeURIComponent(photoUrl)}`, { responseType: "arraybuffer"});
     const img = response.data;
 
 
