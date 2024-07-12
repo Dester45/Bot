@@ -21,7 +21,7 @@ module.exports.run = async function ({ api, event, args, admin }) {
 	async function sendMessage(thread) {
 		try {
 			await api.sendMessage(
-`𝙉𝙊𝙏𝙄𝙁𝙄𝘾𝘼𝙏𝙄𝙊𝙉 - 𝘼𝘿𝙈𝙄𝙉\n-----------------------\n🌐 [${custom}]\n-----------------------\n〉「𝙰𝚎𝚜𝚝𝚑𝚎𝚛」`,
+`𝙉𝙊𝙏𝙄𝙁𝙄𝘾𝘼𝙏𝙄𝙊𝙉 - 𝘼𝘿𝙈𝙄𝙉\n-----------------------\n🌐 [${custom}]\n-----------------------\n〉≛𝙃𝙐𝙉𝙏𝙀𝙍 𝙇𝙄𝙉𝙀≛`,
 				thread.threadID
 			);
 			sentCount++;
